@@ -1,0 +1,46 @@
+<main>
+
+    <div class="d-flex align-items-center">
+      <div class="flex-grow-1">
+        <h1 class="page-title">Business Cards</h1>
+        <p class="page-description">
+          Bu ekranda kartvizitlerinizi yönetebilirsiniz.
+        </p>  
+      </div>
+      <app-card-search></app-card-search>
+      <button mat-flat-button color="primary" style = "margin-left: 16px" (click)="openAddCardModel()">Add Business Card</button>
+    </div> 
+    <hr>
+
+    <div class="cards">
+    <div class="row">
+
+      <div class="col-12" *ngIf="!cardService.cards">
+        <span>Kartvizitler yükleniyor. Lütfen bekleyiniz.</span>
+      </div>
+      <div class="col-12" *ngIf="cardService.cards?.length === 0">
+        <span>Henüz kartvizit eklemediniz. <a class="text-primary" (click)="openAddCardModel()">Buraya tıklayarak</a> ilk kartvizitinizi ekleyebilirsiniz.</span>
+      </div>
+      <div class="col-12 col-md-4 col-lg-3" *ngFor="let card of cardService.filteredCards">
+        <app-card-item [card]="card"></app-card-item>
+      </div>
+           
+            <!-- <div class="col-12 col-md-4 col-lg-3">
+              <mat-card class="card-item">
+                <mat-card-header>
+                  <mat-card-title>Melsa Sağın</mat-card-title>
+                  <mat-card-subtitle>Yazılım Mühendisliği Öğrencisi</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">+90 53* *** ** **</li>
+                    <li class="list-group-item">melsa.sagin@***.********.edu.tr</li>
+                    <li class="list-group-item">Büyükçekmece, İstanbul / Türkiye</li>
+                  </ul>
+                </mat-card-content>
+              </mat-card>
+            </div> -->
+            
+    </div>
+    </div>
+  </main>
